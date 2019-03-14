@@ -1,0 +1,2 @@
+Device Tree Name,Project Name,FPGA or Carrier,U-boot,Description
+zynq-zed-adv7511-ad9364-fmcomms4 ,fmcomms2,zed,zynq_zed_defconfig,the on-board ADV7511 and the AD-FMCOMMS4-EBZ board 

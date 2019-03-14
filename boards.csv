@@ -1,0 +1,45 @@
+Device Tree Name,Project Name,FPGA or Carrier,U-boot,Description
+socfpga-arria10-socdk-adrv9371 ,adrv9371x,Arria 10 SoC Development Kit ,,ADRV9371 board 
+socfpga-arria10-socdk-daq2 ,daq2,Arria 10 SoC Development Kit ,,AD-FMCDAQ-EBZ 
+socfpga-cyclone5-sockit-arradio ,aradio,SoCKit ,,Arradio board 
+zynq-adrv9361-z7035-bob ,adrv9361z7035,ccbob_lvds,,ADRV9361 
+zynq-adrv9361-z7035-bob-cmos ,adrv9361z7035,ccbob_cmos,,ADRV9361 
+zynq-adrv9361-z7035-box ,adrv9361z7035,ccbox_lvds,,ADRV9361 
+zynq-adrv9361-z7035-fmc ,adrv9361z7035,ccfmc_lvds,,the on-board ADV7511 and the ADRV9361 
+zynq-adrv9364-z7020-bob ,adrv9364z7020,ccbob_lvds,,ADRV9364 
+zynq-adrv9364-z7020-bob-cmos ,adrv9364z7020,ccbob_cmos,,ADRV9364 
+zynq-adrv9364-z7020-box ,adrv9364z7020,ccbox_lvds,,ADRV9364 
+zynqmp-zcu102-ad9361-fmcomms2-3 ,fmcomms2,ZCU102 ,xilinx_zynqmp_zcu102_rev1_0_defconfig,AD-FMCOMMS3-EBZ 
+zynqmp-zcu102-ad9361-fmcomms5 ,fmcomms5,ZCU102 ,xilinx_zynqmp_zcu102_rev1_0_defconfig,AD-FMCOMMS5-EBZ 
+zynqmp-zcu102-ad9364-fmcomms4 ,fmcomms2,ZCU102 ,xilinx_zynqmp_zcu102_rev1_0_defconfig,AD-FMCOMMS4-EBZ 
+zynqmp-zcu102-rev10-adrv9009 ,adrv9009,ZCU102 ,xilinx_zynqmp_zcu102_rev1_0_defconfig,ADRV9009 
+zynqmp-zcu102-rev10-adrv9371 ,adrv9371x,ZCU102 ,xilinx_zynqmp_zcu102_rev1_0_defconfig,ADRV9371 
+zynqmp-zcu102-rev10-fmcdaq2 ,daq2,ZCU102 ,xilinx_zynqmp_zcu102_rev1_0_defconfig,AD-FMCDAQ-EBZ 
+zynq-zc702-adv7511 ,adv7511,ZC702 ,zynq_zc702_defconfig,the on-board ADV7511 
+zynq-zc702-adv7511-ad9361-fmcomms2-3 ,fmcomms2,ZC702 ,zynq_zc702_defconfig,the on-board ADV7511 and the AD-FMCOMMS2-EBZ or AD-FMCOMMS3-EBZ board 
+zynq-zc702-adv7511-ad9361-fmcomms5 ,fmcomms5,ZC702 ,zynq_zc702_defconfig,the on-board ADV7511 and the AD-FMCOMMS5-EBZ 
+zynq-zc702-adv7511-ad9364-fmcomms4 ,fmcomms2,ZC702 ,zynq_zc702_defconfig,the on-board ADV7511 and the AD-FMCOMMS4-EBZ board 
+zynq-zc706-adv7511 ,,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 
+zynq-zc706-adv7511-ad6676-fmc ,ad6676evb,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 and the AD6676-FMC-EBZ board 
+zynq-zc706-adv7511-ad9265-fmc-125ebz ,ad9365_fmc,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 and the AD9265-FMC-125EBZ board 
+zynq-zc706-adv7511-ad9361-fmcomms2-3 ,fmcomms2,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 and the AD-FMCOMMS2-EBZ or AD-FMCOMMS3-EBZ board 
+zynq-zc706-adv7511-ad9361-fmcomms5 ,fmcomms5,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 and the AD-FMCOMMS5-EBZ board 
+zynq-zc706-adv7511-ad9361-fmcomms5-ext-lo-adf5355 ,fmcomms5,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 and the AD-FMCOMMS5-EBZ board 
+zynq-zc706-adv7511-ad9364-fmcomms4 ,fmcomms2,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 and the AD-FMCOMMS4-EBZ board 
+zynq-zc706-adv7511-ad9434-fmc-500ebz ,ad9434_fmc,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 and the AD9434-FMC-500EBZ board 
+zynq-zc706-adv7511-ad9625-fmcadc2 ,fmcadc2,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 and the AD-FMCADC2-EBZ board 
+zynq-zc706-adv7511-ad9625-fmcadc3 ,fmcadc3,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 and the AD-FMCADC3-EBZ board 
+zynq-zc706-adv7511-ad9739a-fmc ,ad9739a_fmc,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 and the EVAL-AD9739A 
+zynq-zc706-adv7511-adrv9371 ,adrv9371x,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 and the ADRV9371 board 
+zynq-zc706-adv7511-adrv9375 ,adrv9371x,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 and the ADRV9375 board 
+zynq-zc706-adv7511-fmcadc4 ,fmcadc4,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 and the AD-FMCADC4-EBZ board 
+zynq-zc706-adv7511-fmcdaq2 ,daq2,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 and the AD-FMCDAQ2-EBZ board 
+zynq-zc706-adv7511-fmcdaq3 ,daq3,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 and the AD-FMCDAQ3-EBZ board 
+zynq-zc706-adv7511-fmcjesdadc1 ,fmcjesdadc1,ZC706 ,zynq_zc706_defconfig,the on-board ADV7511 and the AD-FMCJESDADC1-EBZ board 
+zynq-zed-adv7511 ,adv7511,zed,zynq_zed_defconfig,the on-board ADV7511 
+zynq-zed-adv7511-ad9361-fmcomms2-3 ,fmcomms2,zed,zynq_zed_defconfig,the on-board ADV7511 and the AD-FMCOMMS2-EBZ or AD-FMCOMMS3-EBZ board 
+zynq-zed-adv7511-ad9364-fmcomms4 ,fmcomms2,zed,zynq_zed_defconfig,the on-board ADV7511 and the AD-FMCOMMS4-EBZ board 
+zynq-zed-adv7511-ad9467-fmc-250ebz ,ad9467_fmc,zed,zynq_zed_defconfig,the on-board ADV7511 and the AD9467-FMC-250EBZ board 
+zynq-zed-adv7511-cn0363 ,cn0363,zed,zynq_zed_defconfig,the on-board ADV7511 and the EVAL-CN0363-PMDZ board 
+zynq-zed-adv7511-fmcmotcon2 ,motcon2_fmc,zed,zynq_zed_defconfig,AD-FMCMOTCON2-EBZ 
+zynq-zed-imageon ,imageon,zed,zynq_zed_defconfig,FMC-IMAGEON 
