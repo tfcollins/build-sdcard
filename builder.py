@@ -5,9 +5,9 @@ import threading
 import time
 
 def lu(i):
-    if 0:
+    if i==0:
         return "Todo"
-    elif 1:
+    elif i==1:
         return "Built"
     else:
         return "Failed"
@@ -25,6 +25,7 @@ class BoardConfig:
         self.HDL_BUILD = 0
         self.UBOOT_BUILD = 0
         self.BOOTBIN_BUILD = 0
+        self.DEVTREE_BUILD = 0
 
 class BootBuilder():
     def __init__(self):
@@ -33,6 +34,9 @@ class BootBuilder():
         self.LINUXBRANCH = '2018_R1'
         self.Jobs = 2 # Concurrent Tasks
         self.Boards = []
+        self.KernelVariants = []
+        self.KernelVariantsCC = []
+        self.KernelVariantsResult = []
         self.TARGET_DIR = 'SDCARD'
 
         self.read_board_configs()
@@ -99,7 +103,7 @@ class BootBuilder():
 
 
     def read_board_configs(self):
-        filepath = 'boards_test.csv'
+        filepath = 'boards.csv'
         with open(filepath) as fp:
            line = fp.readline() # Skip first line
            line = fp.readline()
@@ -122,6 +126,13 @@ class BootBuilder():
                   continue
 
                self.Boards.append(BoardConfig(project,fpga,dt,arch,cc,ubootconfig))
+               if arch not in [y for x in self.KernelVariants for y in self.KernelVariants]:
+                   self.KernelVariants.append(arch)
+                   self.KernelVariantsCC.append(cc)
+                   self.KernelVariantsResult.append(0)
+
+           print("Kernels to build")
+           print(self.KernelVariants)
 
     def build_hdl(self,config):
         print("Building hdl %s for %s" % (config.project,config.fpga))
@@ -153,11 +164,30 @@ class BootBuilder():
     def build_linux(self,config):
         print("Building linux %s for %s" % (config.project,config.fpga))
         TG = self.TARGET_DIR+"/"+config.devtree
-        cmd = ["./build-linux.sh",self.VIVADO,TG,config.arch,config.cc,config.devtree]
+        cmd = ["./build-linux.sh",TG,self.VIVADO,config.arch,config.cc,config.devtree]
         if self.sys_call(cmd):
             config.LINUX_BUILD = 1
         else:
             config.LINUX_BUILD = 2
+
+    def build_devtree(self,config):
+        print("Building devicetree %s for %s" % (config.project,config.fpga))
+        TG = self.TARGET_DIR+"/"+config.devtree
+        cmd = ["./build-devtree.sh",TG,self.VIVADO,config.arch,config.cc,config.devtree]
+        if self.sys_call(cmd):
+            config.DEVTREE_BUILD = 1
+        else:
+            config.DEVTREE_BUILD = 2
+
+    def build_kernels(self):
+        TG = self.TARGET_DIR
+        for indx in range(len(self.KernelVariants)):
+            print("Building kernel for %s",(self.KernelVariants[indx]))
+            cmd = ["./build-kernel.sh",TG,self.VIVADO,self.KernelVariants[indx],self.KernelVariantsCC[indx]]
+            if self.sys_call(cmd):
+                self.KernelVariantsResult[indx] = 1
+            else:
+                self.KernelVariantsResult[indx] = 2
 
     def build_bootbin(self,config):
         if config.HDL_BUILD==1 and config.UBOOT_BUILD==1 and config.LINUX_BUILD==1:
@@ -181,6 +211,9 @@ class BootBuilder():
     def build_linux_pipeline(self):
         self.process_stage(self.build_linux)
 
+    def build_devtree_pipeline(self):
+        self.process_stage(self.build_devtree)
+
     def build_bootbin_pipeline(self):
         self.process_stage(self.build_bootbin)
 
@@ -203,8 +236,10 @@ class BootBuilder():
     def build_complete_pipeline_flood(self):
         self.create_target_dirs()
         self.get_sources()
-        tasks = [self.build_hdl,self.build_uboot,self.build_linux]
+        self.build_kernels()
+        tasks = [self.build_hdl,self.build_uboot,self.build_devtree]
         self.process_stage_all(tasks)
+        self.print_results()
         self.build_bootbin_pipeline()
         self.print_results()
 
@@ -219,7 +254,11 @@ class BootBuilder():
 
 if __name__== "__main__":
   bb = BootBuilder()
+  #bb.create_target_dirs()
+  #bb.build_kernels()
+  #bb.get_sources()
   #bb.build_linux_pipeline()
+  #bb.build_bootbin_pipeline()
   #bb.print_results()
   #bb.build_complete_pipeline()
   bb.build_complete_pipeline_flood()

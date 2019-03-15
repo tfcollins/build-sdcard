@@ -13,28 +13,21 @@ export ARCH=$ARCH
 export CROSS_COMPILE=$CROSS_COMPILE
 
 # Get ref
-cp -r linux_ref "linux_$DEVICETREE"
+cp -r linux_ref "linux_$ARCH"
 # Build linux
-cd "linux_$DEVICETREE"
-make zynq_xcomm_adv7511_defconfig
-make UIMAGE_LOADADDR=0x8000 uImage
+cd "linux_$ARCH"
 make "$DEVICETREE.dtb"
 cd ..
-cp "linux_$DEVICETREE/arch/arm/boot/uImage" "$OUTPUT_TARGET/uImage"
 cp "linux_$DEVICETREE/arch/arm/boot/dts/$DEVICETREE.dts"  "$OUTPUT_TARGET/devicetree.dtb"
 
 # Check
-echo "Checking Linux build output"
-if [ ! -f $OUTPUT_TARGET/uImage ]; then
-	echo "Linux build failed"
-	exit 1
-fi
+echo "Checking Devicetree build output"
 if [ ! -f $OUTPUT_TARGET/devicetree.dtb ]; then
-	echo "Linux build failed"
+	echo "Devicetree build failed"
 	exit 1
 fi
 
 # Cleanup
-echo "Cleaning up"
-rm -rf "linux_$DEVICETREE"
+#echo "Cleaning up"
+#rm -rf "linux_$DEVICETREE"
 exit 0
